@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="alertify/alertify.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Formulario Modal - Justino</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="login-form bg-light mt-4 p-4">
+                    
+                    <form action="" method="" class="row g-3 needs-validation" novalidate>
+                        <div class="modal-header bg-success text-white">
+                            <h5>Iniciar Sesión</h5>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Usuario</label>
+                            <input type="text" name="username"  class="form-control" required>
+                            <div class="invalid-feedback">El nombre Usuario no es válido</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" name="password" class="form-control" required>
+                            <div class="invalid-feedback">Contraseña Inválido</div>
+                        </div>
+                    
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Recordar Contraseña</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-success float-end">Acceder</button>
+                        </div>
+                    </form>
+                    <hr class="mt-4">
+                    <div class="col-12 col text-center">
+                        <p class="text-center mb-0"><strong>¿Aún no tienes cuenta?</strong></p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Regístrate</button>
+                        <!-- Ventana Modal -->
+                        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header bg-info text-white">                                    
+                                        <h4 class="modal-title" id="exampleModalLabel">Registrarse</h4>                                                                
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">                                    
+                                    <form action="registro.php" method="POST" id="form" class="needs-validation" onsubmit="return validarModal(this)"  novalidate>                                       
+                                        <div class="row g-3 ">                             
+                                                
+                                            <div class="col-md-6">                                                
+                                                <input type="text" class="form-control" name="usuario" id="username" placeholder="Usuario" required>
+                                                <div class="invalid-feedback">
+                                                    Falta Ingrsar usuario
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 ">                                                
+                                                <input type="email" class="form-control" name="correo" id="email" placeholder="Correo" required>
+                                                <div class="invalid-feedback">
+                                                    Falta Ingresar Correo
+                                                </div>
+                                            </div>                                    
+                                                                                            
+                                            <div class="form-group col-md-6">                                               
+                                                <div class="input-group" id="show_hide_password">
+                                                  <input class="form-control" type="password" id="password" placeholder="Contraseña" required>
+                                                  <div class="invalid-feedback">
+                                                    Falta Ingresar Contraseña
+                                                </div>                                                  
+                                                </div>
+                                            </div>   
+                                            <div class="form-group col-md-6">                                                
+                                                <div class="input-group" id="show_hide_password">
+                                                  <input class="form-control" type="password" id="password2" placeholder="Repitir Contraseña" required>  
+                                                  <div class="invalid-feedback">
+                                                    Falta Ingresar Contraseña
+                                                </div>                                               
+                                                </div>
+                                            </div>                               
+                                            <div class="form-group">											
+                                                <input type="text" class="form-control" name="ubicacion" id="ubicacion" placeholder="Ciudad y País de Residencia">
+                                                <div class="invalid-feedback">
+                                                    Falta Ingresar Ubicación
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group col-md-6 bg-light">
+                                                <label for="Fecha de Nacimiento">Fecha de Nacimiento</label>
+                                                <input type="date" class="form-control" placeholder="Enter Date" required>
+                                                <div class="invalid-feedback">
+                                                    Falta Ingresar Fecha Nacimiento
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6 col-sm-12">
+                                                <label for="tipo_documento">Sexo</label>
+                                                <select name="tipo_documento" id="tipo_documento" class="form-control" required="">
+                                                    <option value="" disabled="" selected="">- Seleccione -</option>
+                                                    <option value="1">Masculino</option>
+                                                    <option value="2">Femenino</option>
+                                                    
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Seleccionar el Sexo
+                                                </div>
+                                            </div>                                                                                       
+                                            <hr>
+                                                                                      
+                                            <div class="col-12 bg-info text-white">
+                                                <label class="form-label" for="customFile"><strong>Subir Foto</strong></label>
+                                                <input type="file" class="form-control" id="customFile" />
+                                            </div>
+                                        </div>    
+                                        <div class="form-footer mt-3">
+                                            <button type="submit"  class="btn btn-primary ">Registrar</button>
+                                        </div>
+                                                                        
+                                    </form>                                    
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                <!-- <button type="submit" class="btn btn-primary">Registrar</button> -->
+                                </div>
+                            </div>
+                            </div>
+                        </div> <!-- termina modal -->
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- ESTE SCRIPT ME FUNCIOANA PARA ABRIR MODAL -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+   
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <script src="js/validmodal.js"></script>
+    <!-- <script src="alertify/alertify.min.js"></script> -->
+
+    <!-- Validar los campos Vacios del form script javascript -->
+    <script>
+        var form = document.querySelector('.needs-validation');
+
+        form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        })
+    </script>
+    <script>
+          // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+
+    </script>
+    
+</body>
+</html>
